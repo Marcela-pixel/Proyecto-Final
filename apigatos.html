@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat API Example</title>
+    	<link rel="preload" href="css/style.css" as="style">
+        <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>	
+
+        <img class="logo" src="images/logo.png" alt="">
+        <span class="titulo"> Tus citas mas cerca de tí</span>
+
+</header>
+
+<div class="nav-bg">
+    <nav class="navegacion-principal contenedor">
+        <a href="index.html"> Inicio </a> 
+        <a href="servicios.html">Servicios</a> 
+        <a href="clientes.html">Clientes</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="apigatos.html">Gatos</a>
+    </nav>
+</div>
+    <h1 class="tituloapi">ENAMORADA DE LOS GATOS</h1>
+    <button id="fetchCatBtn" class="boton boton--primario">Ver mas</button>
+    <div id="catContainer"></div>
+    <p align="center">Copyright © 2024 Marcela Moreno Desarrollador Full Stack</p>
+
+    <script>
+        const API_KEY = 'live_8YbWJE8A74caTsV2zABx3hSVZ4rk59mKH8fvUHtyzuzkUsnfZVOmbZwo0jmmzbXTI'; // Reemplaza 'TU_API_KEY_AQUI' con tu clave real de la API
+        async function fetchCatImages() {
+            try {
+                const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=10', {
+                    headers: {
+                        'live_8YbWJE8A74caTsV2zABx3hSVZ4rk59mKH8fvUHtyzuzkUsnfZVOmbZwo0jmmzbXT': API_KEY
+                    }
+                });
+                const data = await response.json();
+                const catContainer = document.getElementById('catContainer');
+                catContainer.innerHTML = '';
+                data.forEach(cat => {
+                    const img = document.createElement('img');
+                    img.src = cat.url;
+                    img.alt = 'Random Cat';
+                    catContainer.appendChild(img);
+                });
+            } catch (error) {
+                console.error('Error fetching the cat images:', error);
+            }
+        }
+
+        document.getElementById('fetchCatBtn').addEventListener('click', fetchCatImages);
+
+        // Fetch cat images on initial load
+        fetchCatImages();
+    </script>
+</body>
+</html>

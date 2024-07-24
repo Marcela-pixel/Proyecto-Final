@@ -1,0 +1,30 @@
+
+body {
+    text-align: center;
+    font-size: 16px;
+	font-family: "Krub", sans-serif;
+}
+h1 {
+    color: #6b93f2;
+    text-align: center;
+}
+#catContainer {
+    display: flex;
+
+
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+#catContainer img {
+    max-width: 200px;
+    margin: 10px;
+}
+#fetchCatBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button{
+    color: rgb(1, 11, 8);
+}
